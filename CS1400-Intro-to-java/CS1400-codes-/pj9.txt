@@ -1,0 +1,607 @@
+Script started on 2018-12-05 16:29:38-08:00
+jmcdonald@abbott ~/cs1400/project $ pwd
+/user/jmcdonald/cs1400/project
+jmcdonald@abbott ~/cs1400/project $ ls -l
+total 171
+-rw------- 1 jmcdonald cpp   873 Dec  5 12:57 Box.class
+-rw------- 1 jmcdonald cpp   931 Dec  5 12:55 Box.java
+-rw------- 1 jmcdonald cpp   300 Dec  1 21:36 Box.java.save
+-rw------- 1 jmcdonald cpp  1935 Oct 28 10:51 DriverTest.class
+-rw------- 1 jmcdonald cpp  2110 Oct 27 22:11 DriverTest.java
+-rw------- 1 jmcdonald cpp  2036 Oct 27 16:43 DriverTest.java.save
+-rw------- 1 jmcdonald cpp  1712 Nov 21 19:45 Employee.class
+-rw------- 1 jmcdonald cpp  1641 Nov 21 19:44 Employee.java
+-rw------- 1 jmcdonald cpp   668 Dec  5 12:21 Figure.class
+-rw------- 1 jmcdonald cpp   613 Dec  5 11:11 Figure.java
+-rw------- 1 jmcdonald cpp  2973 Nov 19 16:09 Fraction.class
+-rw------- 1 jmcdonald cpp  5487 Nov 19 16:04 Fraction.java
+-rw------- 1 jmcdonald cpp  1690 Nov 16 20:12 Fraction.java.save
+-rw------- 1 jmcdonald cpp  1818 Nov 19 16:19 FractionTest.class
+-rw------- 1 jmcdonald cpp  1476 Nov 19 16:14 FractionTest.java
+-rw------- 1 jmcdonald cpp  1073 Sep  6 16:15 InputOutput.class
+-rw------- 1 jmcdonald cpp   757 Sep  6 16:15 InputOutput.java
+-rw------- 1 jmcdonald cpp   514 Sep  6 16:08 InputToOutput.java
+-rw------- 1 jmcdonald cpp   523 Sep  6 15:57 InputToOutputjava
+-rw------- 1 jmcdonald cpp     0 Oct 24 22:13 Invalid
+-rw------- 1 jmcdonald cpp  2959 Oct 14 11:55 MethodRPS.class
+-rw------- 1 jmcdonald cpp  4872 Oct 14 11:54 MethodRPS.java
+-rw------- 1 jmcdonald cpp  2273 Nov 21 23:21 ProductionWorker.class
+-rw------- 1 jmcdonald cpp  2583 Nov 21 23:21 ProductionWorker.java
+-rw------- 1 jmcdonald cpp  2213 Sep 15 13:45 Season.class
+-rw------- 1 jmcdonald cpp  2868 Sep 15 13:45 Season.java
+-rw------- 1 jmcdonald cpp   506 Sep 13 14:40 Season.java.save
+-rw------- 1 jmcdonald cpp  1557 Oct 24 22:10 Temperature.class
+-rw------- 1 jmcdonald cpp  1801 Oct 24 16:31 Temperature.java
+-rw------- 1 jmcdonald cpp  2792 Oct 24 22:11 TemperatureTest.class
+-rw------- 1 jmcdonald cpp  2833 Oct 24 16:32 TemperatureTest.java
+-rw------- 1 jmcdonald cpp   986 Sep  8 22:22 TimeConversionToHMS.class
+-rw------- 1 jmcdonald cpp   757 Sep  8 22:21 TimeConversionToHMS.java
+-rw------- 1 jmcdonald cpp  1071 Sep  8 22:19 TimeConversionToSecond.class
+-rw------- 1 jmcdonald cpp   875 Sep  7 23:07 TimeConversionToSecond.java
+-rw------- 1 jmcdonald cpp   788 Dec  5 12:56 Triangle.class
+-rw------- 1 jmcdonald cpp   864 Dec  5 12:56 Triangle.java
+-rw------- 1 jmcdonald cpp  1774 Nov 21 23:22 WorkerTest.class
+-rw------- 1 jmcdonald cpp  1171 Nov 21 23:20 WorkerTest.java
+-rw------- 1 jmcdonald cpp     0 Oct 24 22:13 exit
+-rw------- 1 jmcdonald cpp  1397 Dec  5 16:28 graphicsTest.class
+-rw------- 1 jmcdonald cpp  2151 Dec  5 16:28 graphicsTest.java
+-rw------- 1 jmcdonald cpp     0 Oct 24 22:13 jmcdonald@abbott
+-rw------- 1 jmcdonald cpp  1481 Oct  3 21:44 palindrometester.class
+-rw------- 1 jmcdonald cpp  1459 Oct 21 09:49 palindrometester.java
+-rw------- 1 jmcdonald cpp  1317 Oct  3 20:15 palindrometester.java.save
+-rw------- 1 jmcdonald cpp   486 Oct  1 21:18 palindrometester.java]
+-rw------- 1 jmcdonald cpp  5216 Oct  3 21:48 pj3.txt
+-rw------- 1 jmcdonald cpp 12132 Oct 14 11:58 pj4.txt
+-rw------- 1 jmcdonald cpp  8939 Oct 24 22:11 pj5.txt
+-rw------- 1 jmcdonald cpp  9477 Oct 28 10:58 pj6.txt
+-rw------- 1 jmcdonald cpp 15043 Nov 19 16:23 pj7.txt
+-rw------- 1 jmcdonald cpp  8791 Nov 21 23:23 pj8.txt
+-rw------- 1 jmcdonald cpp     0 Dec  5 16:29 pj9.txt
+jmcdonald@abbott ~/cs1400/project $ cat Figure.java
+// Jeffrey McDonald
+// CS1400, section 01
+// Project 9 – Figures, Triangle, and Box
+// 12/6/2018
+
+public abstract class Figure
+{
+   protected int offset;
+
+   public Figure()
+   {
+      offset = 0;
+   }
+
+   public Figure(int theOffset)
+   {
+      offset = theOffset;
+   }
+
+   public void setOffset(int newOffset)
+   {
+      offset = newOffset;
+   }
+
+   public int getOffset()
+   {
+      return offset;
+   }
+
+   public void drawAt(int lineNumber)
+   {
+      for (int count = 0; count < lineNumber; count++)
+      System.out.println();
+      drawHere();
+   }
+
+   public abstract void drawHere();
+}
+jmcdonald@abbott ~/cs1400/project $ cat Box.java
+// Jeffrey McDonald
+// CS1400, Section 01
+// project Figures, Triangle, and Box
+// 12/06/2018
+
+public class Box extends Figure
+{
+   private int height;
+   private int width;
+
+   public Box()
+   {
+      height = 0;
+      width = 0;
+   }
+
+   public Box(int Offset, int h, int w)
+   {
+      offset=Offset;
+      height = h;
+      width = w;
+   }
+
+   public void reset(int newOffset,int newH, int newW)
+   {
+      offset=newOffset;
+      height = newH;
+      width = newW;
+   }
+
+   @Override
+   public void drawHere()
+   {
+      for(int i = 1;i<=width;i++)
+      {
+
+         for(int k =0; k<=offset;k++)
+         System.out.print(" ");
+
+
+         for(int j = 1; j<=height ;j++)
+         {
+         if(i==1 || i == width)
+         System.out.print("-");
+         else if(j==1 || j == height)
+         System.out.print("|");
+         else
+         System.out.print(" ");
+         }
+      System.out.println("");
+      }
+   }
+}
+
+jmcdonald@abbott ~/cs1400/project $ cat Triangle.java
+// Jeffrey McDonald
+// CS1400, Section 01
+// Project - 9 Figures, Triangle, and Box
+// 12/06/2018
+
+public class Triangle extends Figure
+{
+   private int base;
+
+   public Triangle()
+   {
+      base = 3;
+   }
+
+   public Triangle(int Offset, int b)
+   {
+      offset = Offset;
+      base = b;
+   }
+
+   public void reset(int newOffset,int newB)
+   {
+      offset=newOffset;
+      base=newB;
+   }
+
+   public void drawHere()
+   {
+      for(int i=1;i<=base;i++)
+      {
+
+         for(int j=1;j<base;j++)
+
+         System.out.print(" ");
+
+
+         for(int j=1;j<=(2*i-1);j++)
+         {
+            if(i==base || j==1 || j==(2*i-1))
+            {
+            System.out.print("*");
+            }
+            else
+            {
+            System.out.print(" ");
+            }
+         }
+         System.out.println();
+      }
+
+   }
+
+}
+jmcdonald@abbott ~/cs1400/project $ cat graphicsTest.java
+// Jeffrey McDonald
+// CS1400, Section 01
+// Project 9 - Figures, Triangle, and Box
+// 12/06/2018
+
+
+public class graphicsTest
+{
+   public static void main(String []args)
+   {
+      System.out.println("Welcome to graphics Test!");
+      System.out.println(" ");
+      Box base = new Box(25,4,5);
+      Triangle top = new Triangle(13,15);
+      top.drawAt(1);
+      base.drawAt(0);
+      System.out.println("                          Tree");
+
+      Box cake1 = new Box(10,35,17);
+      Box cake2 = new Box(11,31,19);
+      Box cake3 = new Box(12,27,15);
+      Box cake4 = new Box(13,23,11);
+      Box cake5 = new Box(14,19,7);
+      cake5.drawAt(3);
+      cake4.drawAt(3);
+      cake3.drawAt(3);
+      cake2.drawAt(3);
+      cake1.drawAt(3);
+      System.out.println("                          Cake");
+
+      Box monitor = new Box(25,50,17);
+      Box connector1 = new Box(50,1,1);
+      Box connector2 = new Box(50,1,1);
+      Box keyboard1 = new Box(40,20,1);
+      Box keyboard2 = new Box(40,20,1);
+      monitor.drawAt(5);
+      connector1.drawAt(5);
+      connector2.drawAt(5);
+      keyboard1.drawAt(5);
+      keyboard2.drawAt(5);
+      System.out.println("                                              Computer");
+
+      Box house = new Box(25,50,20);
+      Triangle roof = new Triangle(13,26);
+      roof.drawAt(7);
+      house.drawAt(7);
+      System.out.println("                                              House");
+
+
+      Box box1 = new Box(25,40,20);
+      Box box2 = new Box(25,30,15);
+      Box box3 = new Box(25,20,10);
+      Triangle triangle1 = new Triangle(15,15);
+      Triangle triangle2 = new Triangle(15,15);
+      box1.drawAt(7);
+      triangle1.drawAt(7);
+      box2.drawAt(7);
+      triangle2.drawAt(7);
+      box3.drawAt(7);                                                                                                                                                   
+      System.out.println("                                              Pattern");
+   }
+}
+jmcdonald@abbott ~/cs1400/project $ javac graphicsTest.java
+jmcdonald@abbott ~/cs1400/project $ java graphicsTest
+Welcome to graphics Test!
+
+
+              *
+              * *
+              *   *
+              *     *
+              *       *
+              *         *
+              *           *
+              *             *
+              *               *
+              *                 *
+              *                   *
+              *                     *
+              *                       *
+              *                         *
+              *****************************
+                          ----
+                          |  |
+                          |  |
+                          |  |
+                          ----
+                          Tree
+
+
+
+               -------------------
+               |                 |
+               |                 |
+               |                 |
+               |                 |
+               |                 |
+               -------------------
+
+
+
+              -----------------------
+              |                     |
+              |                     |
+              |                     |
+              |                     |
+              |                     |
+              |                     |
+              |                     |
+              |                     |
+              |                     |
+              -----------------------
+
+
+
+             ---------------------------
+             |                         |
+             |                         |
+             |                         |
+             |                         |
+             |                         |
+             |                         |
+             |                         |
+             |                         |
+             |                         |
+             |                         |
+             |                         |
+             |                         |
+             |                         |
+             ---------------------------
+
+
+
+            -------------------------------
+            |                             |
+            |                             |
+            |                             |
+            |                             |
+            |                             |
+            |                             |
+            |                             |
+            |                             |
+            |                             |
+            |                             |
+            |                             |
+            |                             |
+            |                             |
+            |                             |
+            |                             |
+            |                             |
+            |                             |
+            -------------------------------
+
+
+
+           -----------------------------------
+           |                                 |
+           |                                 |
+           |                                 |
+           |                                 |
+           |                                 |
+           |                                 |
+           |                                 |
+           |                                 |
+           |                                 |
+           |                                 |
+           |                                 |
+           |                                 |
+           |                                 |
+           |                                 |
+           |                                 |
+           -----------------------------------
+                          Cake
+
+
+
+
+
+                          --------------------------------------------------
+                          |                                                |
+                          |                                                |
+                          |                                                |
+                          |                                                |
+                          |                                                |
+                          |                                                |
+                          |                                                |
+                          |                                                |
+                          |                                                |
+                          |                                                |
+                          |                                                |
+                          |                                                |
+                          |                                                |
+                          |                                                |
+                          |                                                |
+                          --------------------------------------------------
+
+
+
+
+
+                                                   -
+
+
+
+
+
+                                                   -
+
+
+
+
+
+                                         --------------------
+
+
+
+
+
+                                         --------------------
+                                              Computer
+
+
+
+
+
+
+
+                         *
+                         * *
+                         *   *
+                         *     *
+                         *       *
+                         *         *
+                         *           *
+                         *             *
+                         *               *
+                         *                 *
+                         *                   *
+                         *                     *
+                         *                       *
+                         *                         *
+                         *                           *
+                         *                             *
+                         *                               *
+                         *                                 *
+                         *                                   *
+                         *                                     *
+                         *                                       *
+                         *                                         *
+                         *                                           *
+                         *                                             *
+                         *                                               *
+                         ***************************************************
+
+
+
+
+
+
+
+                          --------------------------------------------------
+                          |                                                |
+                          |                                                |
+                          |                                                |
+                          |                                                |
+                          |                                                |
+                          |                                                |
+                          |                                                |
+                          |                                                |
+                          |                                                |
+                          |                                                |
+                          |                                                |
+                          |                                                |
+                          |                                                |
+                          |                                                |
+                          |                                                |
+                          |                                                |
+                          |                                                |
+                          |                                                |
+                          --------------------------------------------------
+                                              House
+
+
+
+
+
+
+
+                          ----------------------------------------
+                          |                                      |
+                          |                                      |
+                          |                                      |
+                          |                                      |
+                          |                                      |
+                          |                                      |
+                          |                                      |
+                          |                                      |
+                          |                                      |
+                          |                                      |
+                          |                                      |
+                          |                                      |
+                          |                                      |
+                          |                                      |
+                          |                                      |
+                          |                                      |
+                          |                                      |
+                          |                                      |
+                          ----------------------------------------
+
+
+
+
+
+
+
+              *
+              * *
+              *   *
+              *     *
+              *       *
+              *         *
+              *           *
+              *             *
+              *               *
+              *                 *
+              *                   *
+              *                     *
+              *                       *
+              *                         *
+              *****************************
+
+
+
+
+
+
+
+                          ------------------------------
+                          |                            |
+                          |                            |
+                          |                            |
+                          |                            |
+                          |                            |
+                          |                            |
+                          |                            |
+                          |                            |
+                          |                            |
+                          |                            |
+                          |                            |
+                          |                            |
+                          |                            |
+                          ------------------------------
+
+
+
+
+
+
+
+              *
+              * *
+              *   *
+              *     *
+              *       *
+              *         *
+              *           *
+              *             *
+              *               *
+              *                 *
+              *                   *
+              *                     *
+              *                       *
+              *                         *
+              *****************************
+
+
+
+
+
+
+
+                          --------------------
+                          |                  |
+                          |                  |
+                          |                  |
+                          |                  |
+                          |                  |
+                          |                  |
+                          |                  |
+                          |                  |
+                          --------------------
+                                              Pattern
+jmcdonald@abbott ~/cs1400/project $ exit script
+exit
+bash: exit: script: numeric argument required
+
+Script done on 2018-12-05 16:30:45-08:00
+jmcdonald@abbott ~/cs1400/project $
+

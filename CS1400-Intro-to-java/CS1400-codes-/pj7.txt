@@ -1,0 +1,455 @@
+
+Script started on 2018-11-19 16:18:20-08:00
+jmcdonald@abbott ~/cs1400/project $ pwd
+/user/jmcdonald/cs1400/project
+jmcdonald@abbott ~/cs1400/project $ ls -l
+total 115
+-rw------- 1 jmcdonald cpp  1935 Oct 28 10:51 DriverTest.class
+-rw------- 1 jmcdonald cpp  2110 Oct 27 22:11 DriverTest.java
+-rw------- 1 jmcdonald cpp  2036 Oct 27 16:43 DriverTest.java.save
+-rw------- 1 jmcdonald cpp  2973 Nov 19 16:09 Fraction.class
+-rw------- 1 jmcdonald cpp  5487 Nov 19 16:04 Fraction.java
+-rw------- 1 jmcdonald cpp  1690 Nov 16 20:12 Fraction.java.save
+-rw------- 1 jmcdonald cpp  1818 Nov 19 16:15 FractionTest.class
+-rw------- 1 jmcdonald cpp  1476 Nov 19 16:14 FractionTest.java
+-rw------- 1 jmcdonald cpp  1073 Sep  6 16:15 InputOutput.class
+-rw------- 1 jmcdonald cpp   757 Sep  6 16:15 InputOutput.java
+-rw------- 1 jmcdonald cpp   514 Sep  6 16:08 InputToOutput.java
+-rw------- 1 jmcdonald cpp   523 Sep  6 15:57 InputToOutputjava
+-rw------- 1 jmcdonald cpp     0 Oct 24 22:13 Invalid
+-rw------- 1 jmcdonald cpp  2959 Oct 14 11:55 MethodRPS.class
+-rw------- 1 jmcdonald cpp  4872 Oct 14 11:54 MethodRPS.java
+-rw------- 1 jmcdonald cpp  2213 Sep 15 13:45 Season.class
+-rw------- 1 jmcdonald cpp  2868 Sep 15 13:45 Season.java
+-rw------- 1 jmcdonald cpp   506 Sep 13 14:40 Season.java.save
+-rw------- 1 jmcdonald cpp  1557 Oct 24 22:10 Temperature.class
+-rw------- 1 jmcdonald cpp  1801 Oct 24 16:31 Temperature.java
+-rw------- 1 jmcdonald cpp  2792 Oct 24 22:11 TemperatureTest.class
+-rw------- 1 jmcdonald cpp  2833 Oct 24 16:32 TemperatureTest.java
+-rw------- 1 jmcdonald cpp   986 Sep  8 22:22 TimeConversionToHMS.class
+-rw------- 1 jmcdonald cpp   757 Sep  8 22:21 TimeConversionToHMS.java
+-rw------- 1 jmcdonald cpp  1071 Sep  8 22:19 TimeConversionToSecond.class
+-rw------- 1 jmcdonald cpp   875 Sep  7 23:07 TimeConversionToSecond.java
+-rw------- 1 jmcdonald cpp     0 Oct 24 22:13 exit
+-rw------- 1 jmcdonald cpp     0 Oct 24 22:13 jmcdonald@abbott
+-rw------- 1 jmcdonald cpp  1481 Oct  3 21:44 palindrometester.class
+-rw------- 1 jmcdonald cpp  1459 Oct 21 09:49 palindrometester.java
+-rw------- 1 jmcdonald cpp  1317 Oct  3 20:15 palindrometester.java.save
+-rw------- 1 jmcdonald cpp   486 Oct  1 21:18 palindrometester.java]
+-rw------- 1 jmcdonald cpp  5216 Oct  3 21:48 pj3.txt
+-rw------- 1 jmcdonald cpp 12132 Oct 14 11:58 pj4.txt
+-rw------- 1 jmcdonald cpp  8939 Oct 24 22:11 pj5.txt
+-rw------- 1 jmcdonald cpp  9477 Oct 28 10:58 pj6.txt
+-rw------- 1 jmcdonald cpp     0 Nov 19 16:18 pj7.txt
+jmcdonald@abbott ~/cs1400/project $ cat Fraction.java
+
+import java.util.Scanner;
+
+// Jeffrey McDonald
+// CS1400, section 01
+// Project 7 - Fractions
+// 11/20/2018
+
+public class Fraction
+{
+   private int numerator;
+   private int denominator;
+   private static int created;
+
+   public Fraction()
+   {
+      numerator = 0;
+      denominator = 1;
+      created = 0;
+      created++;
+   }
+
+   public Fraction(int num, int den)
+   {
+
+      numerator = num;
+      denominator = den;
+
+      if(num>0 && den<0)
+      {
+      numerator =(num*-1);
+      denominator = (den*-1);
+      }
+
+      else if(den<0 && num < 0)
+      {
+      numerator = num;
+      denominator = (-1*den);
+      }
+      else if (denominator==0)
+      {
+      System.out.println("invalid value switching to 0/1");
+      numerator = 0;
+      denominator = 1;
+      }
+
+      else if (numerator == 0)
+      {
+      denominator = 1;
+      }
+
+      created++;
+   }
+
+   public static Fraction read()
+   {
+      int num, den;
+      Scanner kb = new Scanner(System.in);
+      System.out.println("Welcome to Fractions Test! ");
+      System.out.println("Please enter 2 fractions:");
+      System.out.println("Fraction 1:");
+      System.out.print("Enter a integer numerator:");
+      num = kb.nextInt();
+      System.out.print("Enter a integer denominator:");
+      den = kb.nextInt();
+      Fraction a = new Fraction(num,den);
+      return a;
+   }
+
+   public static Fraction read2()
+   {
+      int num, den;
+      Scanner kb = new Scanner(System.in);
+      System.out.println("");
+      System.out.println("Fraction 2:");
+      System.out.print("Enter a integer numerator:");
+      num = kb.nextInt();
+      System.out.print("Enter a integer denominator:");
+      den = kb.nextInt();
+      Fraction b = new Fraction(num,den);
+      return b;
+   }
+
+   public Fraction add(Fraction other)
+   {
+      int num,den,lcd;
+
+      if((other.denominator%this.denominator)==0)
+      {
+      lcd = other.denominator/this.denominator;
+      num = (this.numerator*lcd)+(other.numerator);
+      den = (other.denominator);
+      Fraction ans = new Fraction(num,den);
+      return ans;
+      }
+
+      else if((this.denominator%other.denominator)==0)
+      {
+      lcd = this.denominator/this.denominator;
+      num = (this.numerator)+(other.numerator*lcd);
+      den = (this.denominator);
+      Fraction ans = new Fraction(num,den);
+      return ans;
+      }
+
+      else if((this.denominator%other.denominator)!=0&&(other.denominator%this.denominator)!=0)
+      {
+      num = (this.numerator*other.denominator)+(other.numerator*this.denominator);
+      den = (this.denominator*other.denominator);
+      Fraction ans = new Fraction(num,den);
+      return ans;
+      }
+
+      else if(this.denominator==other.denominator)
+      {
+      num=(this.numerator)+(other.numerator);
+      den=(this.denominator);
+      Fraction ans =new Fraction(num,den);
+      return ans;
+      }
+
+      Fraction ans = new Fraction(0,1);
+      return ans;
+
+   }
+
+   public Fraction subtract(Fraction other)
+   {
+      int num,den,lcd;
+
+      if((other.denominator%this.denominator)==0)
+      {
+      lcd = other.denominator/this.denominator;
+      num = (this.numerator*lcd)-(other.numerator);
+      den = (other.denominator);
+      Fraction ans = new Fraction(num,den);
+      return ans;
+      }
+
+      else if((this.denominator%other.denominator)==0)
+      {
+      lcd = this.denominator/this.denominator;
+      num = (this.numerator)-(other.numerator*lcd);
+      den = (this.denominator);
+      Fraction ans = new Fraction(num,den);
+      return ans;
+      }
+
+      else if((this.denominator%other.denominator)!=0&&(other.denominator%this.denominator)!=0)
+      {
+      num = (this.numerator*other.denominator)-(other.numerator*this.denominator);
+      den = (this.denominator*other.denominator);
+      Fraction ans = new Fraction(num,den);
+      return ans;
+      }
+
+      else if((this.denominator%other.denominator)!=0&&(other.denominator%this.denominator)!=0)
+      {
+      num = (this.numerator*other.denominator)-(other.numerator*this.denominator);
+      den = (this.denominator*other.denominator);
+      Fraction ans = new Fraction(num,den);
+      return ans;
+      }
+
+      else if(this.denominator==other.denominator)
+      {
+      num=(this.numerator)-(other.numerator);
+      den=(this.denominator);
+      Fraction ans =new Fraction(num,den);
+      return ans;
+      }
+
+      Fraction ans = new Fraction(0,1);
+      return ans;
+
+
+   }
+
+   public Fraction multiply(Fraction other)
+   {
+      int num = (this.numerator * other.numerator);
+      int den = (this.denominator * other.denominator);
+      Fraction ans = new Fraction(num,den);
+      return ans;
+   }
+
+   public Fraction divide(Fraction other)
+   {
+      int num = (this.numerator * other.denominator);
+      int den = (this.denominator * other.numerator);
+      Fraction ans = new Fraction(num, den);
+      return ans;
+   }
+
+
+
+   public static int created()
+   {
+      return created;
+   }
+
+   public String toString()
+   {
+      String Fraction = numerator + "/" + denominator;
+      return Fraction;
+   }
+
+   public double printAsFloat()
+   {
+      double num = 1.00*this.numerator;
+      double den = 1.00*this.denominator;
+      double ratio = num/den;
+      return ratio;
+   }
+
+   private int gcd (int num1, int num2)
+   {
+      while (num1!=num2)
+      {
+        if(num1>num2)
+          num1= num1-num2;
+        else
+        num2 = num2- num1;
+      }
+      return num1;
+   }
+
+}
+jmcdonald@abbott ~/cs1400/project $ cat FractionTest.java
+
+import java.util.Scanner;
+
+
+// Jeffrey McDonald
+// CS1400, section 01
+// Project 7 - Fractions
+// 11/14/2018
+
+
+public class FractionTest
+{
+   public static void main(String []args)
+   {
+      int num, den, num2, den2;
+      Scanner kb = new Scanner(System.in);
+      System.out.println("Welcome to Fractions Test! ");
+      System.out.println("Please enter 2 fractions:");
+      System.out.println("Fraction 1:");
+      System.out.print("Enter a integer numerator:");
+      num = kb.nextInt();
+      System.out.print("Enter a integer denominator:");
+      den = kb.nextInt();
+      System.out.println("Fraction 2:");
+      System.out.print("Enter a integer numerator:");
+      num2 = kb.nextInt();
+      System.out.print("Enter a integer denominator:");
+      den2 = kb.nextInt();
+
+      Fraction a = new Fraction(num,den);
+      Fraction b = new Fraction(num2,den2);
+      Fraction c = a.add(b);
+      Fraction c1 =a.subtract(b);
+      Fraction c2= a.multiply(b);
+      Fraction c3= a.divide(b);
+      System.out.println("");
+      System.out.println("The results are ");
+      System.out.println(a+" + "+ b + " = " + c + " = "+c.printAsFloat());
+      System.out.println(a+" - "+ b + " = " + c1+ " = "+c1.printAsFloat());
+      System.out.println(a+" * "+ b + " = " +c2 + " = "+c2.printAsFloat());
+      System.out.println(a+" / "+ b + " = " +c3 + " = "+c3.printAsFloat());
+      System.out.println("The amount of created fractions was "+a.created());     
+   }
+}
+
+
+jmcdonald@abbott ~/cs1400/project $ javac FractionTest.java
+jmcdonald@abbott ~/cs1400/project $ java FractionTest
+Welcome to Fractions Test!
+Please enter 2 fractions:
+Fraction 1:
+Enter a integer numerator:1
+Enter a integer denominator:2
+Fraction 2:
+Enter a integer numerator:1
+Enter a integer denominator:3
+
+The results are
+1/2 + 1/3 = 5/6 = 0.8333333333333334
+1/2 - 1/3 = 1/6 = 0.16666666666666666
+1/2 * 1/3 = 1/6 = 0.16666666666666666
+1/2 / 1/3 = 3/2 = 1.5
+The amount of created fractions was 6
+jmcdonald@abbott ~/cs1400/project $ java FractionTest
+Welcome to Fractions Test!
+Please enter 2 fractions:
+Fraction 1:
+Enter a integer numerator:3
+Enter a integer denominator:0
+Fraction 2:
+Enter a integer numerator:6
+Enter a integer denominator:-2
+invalid value switching to 0/1
+
+The results are
+0/1 + -6/2 = -6/2 = -3.0
+0/1 - -6/2 = 6/2 = 3.0
+0/1 * -6/2 = 0/1 = 0.0
+0/1 / -6/2 = 0/1 = 0.0
+The amount of created fractions was 6
+jmcdonald@abbott ~/cs1400/project $ java FractionTest
+Welcome to Fractions Test!
+Please enter 2 fractions:
+Fraction 1:
+Enter a integer numerator:0
+Enter a integer denominator:-5
+Fraction 2:
+Enter a integer numerator:-5
+Enter a integer denominator:-20
+
+The results are
+0/1 + -5/20 = -5/20 = -0.25
+0/1 - -5/20 = 5/20 = 0.25
+0/1 * -5/20 = 0/1 = 0.0
+0/1 / -5/20 = 0/1 = 0.0
+The amount of created fractions was 6
+jmcdonald@abbott ~/cs1400/project $ java FractionTest
+Welcome to Fractions Test!
+Please enter 2 fractions:
+Fraction 1:
+Enter a integer numerator:12
+Enter a integer denominator:36
+Fraction 2:
+Enter a integer numerator:70
+Enter a integer denominator:84
+
+The results are
+12/36 + 70/84 = 3528/3024 = 1.1666666666666667
+12/36 - 70/84 = -1512/3024 = -0.5
+12/36 * 70/84 = 840/3024 = 0.2777777777777778
+12/36 / 70/84 = 1008/2520 = 0.4
+The amount of created fractions was 6
+jmcdonald@abbott ~/cs1400/project $ java FractionTest
+Welcome to Fractions Test!
+Please enter 2 fractions:
+Fraction 1:
+Enter a integer numerator:-8
+Enter a integer denominator:2
+Fraction 2:
+Enter a integer numerator:10
+Enter a integer denominator:10
+
+The results are
+-8/2 + 10/10 = -30/10 = -3.0
+-8/2 - 10/10 = -50/10 = -5.0
+-8/2 * 10/10 = -80/20 = -4.0
+-8/2 / 10/10 = -80/20 = -4.0
+The amount of created fractions was 6
+jmcdonald@abbott ~/cs1400/project $ java FractionTest
+Welcome to Fractions Test!
+Please enter 2 fractions:
+Fraction 1:
+Enter a integer numerator:13
+Enter a integer denominator:-1
+Fraction 2:
+Enter a integer numerator:0
+Enter a integer denominator:9
+invalid value switching to 0/1
+
+The results are
+-13/1 + 0/1 = -13/1 = -13.0
+-13/1 - 0/1 = -13/1 = -13.0
+-13/1 * 0/1 = 0/1 = 0.0
+-13/1 / 0/1 = 0/1 = 0.0
+The amount of created fractions was 6
+jmcdonald@abbott ~/cs1400/project $ java FractionTest
+Welcome to Fractions Test!
+Please enter 2 fractions:
+Fraction 1:
+Enter a integer numerator:1212
+Enter a integer denominator:123
+Fraction 2:
+Enter a integer numerator:-123
+Enter a integer denominator:-1212
+
+The results are
+1212/123 + -123/1212 = 1453815/149076 = 9.752173388070513
+1212/123 - -123/1212 = 1484073/149076 = 9.955143685100218
+1212/123 * -123/1212 = -149076/149076 = -1.0
+1212/123 / -123/1212 = -1468944/15129 = -97.09458655562166
+The amount of created fractions was 6
+jmcdonald@abbott ~/cs1400/project $ java FractionTest
+Welcome to Fractions Test!
+Please enter 2 fractions:
+Fraction 1:
+Enter a integer numerator:3
+Enter a integer denominator:-20
+Fraction 2:
+Enter a integer numerator:-2
+Enter a integer denominator:9
+
+The results are
+-3/20 + -2/9 = -67/180 = -0.37222222222222223
+-3/20 - -2/9 = 13/180 = 0.07222222222222222
+-3/20 * -2/9 = 6/180 = 0.03333333333333333
+-3/20 / -2/9 = -27/40 = -0.675
+The amount of created fractions was 6
+jmcdonald@abbott ~/cs1400/project $ exit script
+exit
+bash: exit: script: numeric argument required
+
+Script done on 2018-11-19 16:23:49-08:00

@@ -1,0 +1,128 @@
+jmcdonald@costello ~/cs1400/project $ cat pj3.txt
+Script started on 2018-10-03 21:43:42-0700
+jmcdonald@costello ~/cs1400/project $ pwd
+/user/jmcdonald/cs1400/project
+jmcdonald@costello ~/cs1400/project $ ls-l
+bash: ls-l: command not found
+jmcdonald@costello ~/cs1400/project $ ls -l
+total 29
+-rw------- 1 jmcdonald cpp 1073 Sep  6 16:15 InputOutput.class
+-rw------- 1 jmcdonald cpp  757 Sep  6 16:15 InputOutput.java
+-rw------- 1 jmcdonald cpp  514 Sep  6 16:08 InputToOutput.java
+-rw------- 1 jmcdonald cpp  523 Sep  6 15:57 InputToOutputjava
+-rw------- 1 jmcdonald cpp 2213 Sep 15 13:45 Season.class
+-rw------- 1 jmcdonald cpp 2868 Sep 15 13:45 Season.java
+-rw------- 1 jmcdonald cpp  506 Sep 13 14:40 Season.java.save
+-rw------- 1 jmcdonald cpp  986 Sep  8 22:22 TimeConversionToHMS.class
+-rw------- 1 jmcdonald cpp  757 Sep  8 22:21 TimeConversionToHMS.java
+-rw------- 1 jmcdonald cpp 1071 Sep  8 22:19 TimeConversionToSecond.class
+-rw------- 1 jmcdonald cpp  875 Sep  7 23:07 TimeConversionToSecond.java
+-rw------- 1 jmcdonald cpp 1481 Oct  3 20:53 palindrometester.class
+-rw------- 1 jmcdonald cpp 1461 Oct  3 20:53 palindrometester.java
+-rw------- 1 jmcdonald cpp 1317 Oct  3 20:15 palindrometester.java.save
+-rw------- 1 jmcdonald cpp  486 Oct  1 21:18 palindrometester.java]
+-rw------- 1 jmcdonald cpp    0 Oct  3 21:43 pj3.txt
+jmcdonald@costello ~/cs1400/project $ cat palindrometester.java
+
+
+
+//Jeffrey McDonald
+//CS1400, Section 1
+//Project 3-Palindrome tester
+//10/04/2018
+
+import java.util.Scanner;
+public class palindrometester
+{
+public static void main(String []args)
+   {
+    Scanner kb =new Scanner(System.in);
+    String string;
+  int pcount = 0;
+    do
+     {
+    System.out.print(" enter a word, phrase, or sentence(blank line to stop):");
+    int F,L,length;
+    String reverse,stop,changeCase;
+    string = kb.nextLine();
+    stop = "stop";
+    boolean palindrome = true;
+    changeCase=string.toLowerCase();
+
+     F=0;
+     L = string.length()-1;
+          while(L>F)
+          {
+          if (changeCase.charAt(F)!=changeCase.charAt(L))
+             {
+              palindrome = false;
+              break;
+             }
+          else
+             {
+              F++;
+              L--;
+             }
+          if ( F < 'a' || F > 'z' )
+             {
+              F++;
+             }
+          if ( L < 'a' || L > 'z' )
+             {
+              L--;
+             }
+          }
+         if (palindrome)
+             {
+              System.out.println("Palindrome!");
+              pcount++;
+             }
+         else
+             {
+             System.out.println("Not a Palindrome!");
+             }
+     }while(!string.equals(""));
+     System.out.println("Thank you for using palindrometester!");
+     System.out.println("You found " + pcount+ " palindromes");
+   }
+}
+jmcdonald@costello ~/cs1400/project $ javac palindrometester.java
+jmcdonald@costello ~/cs1400/project $ java palindrometester
+ enter a word, phrase, or sentence(blank line to stop):Kayak
+Palindrome!
+ enter a word, phrase, or sentence(blank line to stop):Desserts I stressed
+Palindrome!
+ enter a word, phrase, or sentence(blank line to stop):Able was I ere I saw Elba
+Palindrome!
+ enter a word, phrase, or sentence(blank line to stop):A man, a plan, a canal, Pamana
+Not a Palindrome!
+ enter a word, phrase, or sentence(blank line to stop):Madam, I'm Adam
+Not a Palindrome!
+ enter a word, phrase, or sentence(blank line to stop):Desserts, I stressed
+Not a Palindrome!
+ enter a word, phrase, or sentence(blank line to stop):Able was I, ere I saw Elba
+Not a Palindrome!
+ enter a word, phrase, or sentence(blank line to stop):Never odd(5,7) or even(4,6)
+Not a Palindrome!
+ enter a word, phrase, or sentence(blank line to stop):ada
+Palindrome!
+ enter a word, phrase, or sentence(blank line to stop):palindrome
+Not a Palindrome!
+ enter a word, phrase, or sentence(blank line to stop):foobar
+Not a Palindrome!
+ enter a word, phrase, or sentence(blank line to stop):civic
+Palindrome!
+ enter a word, phrase, or sentence(blank line to stop):rotor
+Palindrome!
+ enter a word, phrase, or sentence(blank line to stop):redder
+Palindrome!
+ enter a word, phrase, or sentence(blank line to stop):l e v e l
+Palindrome!
+ enter a word, phrase, or sentence(blank line to stop):r  e  f  e  r
+Palindrome!
+ enter a word, phrase, or sentence(blank line to stop):
+Palindrome!
+Thank you for using palindrometester!
+You found 10 palindromes
+jmcdonald@costello ~/cs1400/project $ exit script
+exit

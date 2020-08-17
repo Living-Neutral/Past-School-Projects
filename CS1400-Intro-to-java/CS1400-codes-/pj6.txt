@@ -1,0 +1,255 @@
+
+Script started on 2018-10-28 10:53:36-07:00
+jmcdonald@abbott ~/cs1400/project $ pwd
+/user/jmcdonald/cs1400/project
+jmcdonald@abbott ~/cs1400/project $ ls -l
+total 88
+-rw------- 1 jmcdonald cpp  1935 Oct 28 10:51 DriverTest.class
+-rw------- 1 jmcdonald cpp  2110 Oct 27 22:11 DriverTest.java
+-rw------- 1 jmcdonald cpp  2036 Oct 27 16:43 DriverTest.java.save
+-rw------- 1 jmcdonald cpp  1073 Sep  6 16:15 InputOutput.class
+-rw------- 1 jmcdonald cpp   757 Sep  6 16:15 InputOutput.java
+-rw------- 1 jmcdonald cpp   514 Sep  6 16:08 InputToOutput.java
+-rw------- 1 jmcdonald cpp   523 Sep  6 15:57 InputToOutputjava
+-rw------- 1 jmcdonald cpp     0 Oct 24 22:13 Invalid
+-rw------- 1 jmcdonald cpp  2959 Oct 14 11:55 MethodRPS.class
+-rw------- 1 jmcdonald cpp  4872 Oct 14 11:54 MethodRPS.java
+-rw------- 1 jmcdonald cpp  2213 Sep 15 13:45 Season.class
+-rw------- 1 jmcdonald cpp  2868 Sep 15 13:45 Season.java
+-rw------- 1 jmcdonald cpp   506 Sep 13 14:40 Season.java.save
+-rw------- 1 jmcdonald cpp  1557 Oct 24 22:10 Temperature.class
+-rw------- 1 jmcdonald cpp  1801 Oct 24 16:31 Temperature.java
+-rw------- 1 jmcdonald cpp  2792 Oct 24 22:11 TemperatureTest.class
+-rw------- 1 jmcdonald cpp  2833 Oct 24 16:32 TemperatureTest.java
+-rw------- 1 jmcdonald cpp   986 Sep  8 22:22 TimeConversionToHMS.class
+-rw------- 1 jmcdonald cpp   757 Sep  8 22:21 TimeConversionToHMS.java
+-rw------- 1 jmcdonald cpp  1071 Sep  8 22:19 TimeConversionToSecond.class
+-rw------- 1 jmcdonald cpp   875 Sep  7 23:07 TimeConversionToSecond.java
+-rw------- 1 jmcdonald cpp     0 Oct 24 22:13 exit
+-rw------- 1 jmcdonald cpp     0 Oct 24 22:13 jmcdonald@abbott
+-rw------- 1 jmcdonald cpp  1481 Oct  3 21:44 palindrometester.class
+-rw------- 1 jmcdonald cpp  1459 Oct 21 09:49 palindrometester.java
+-rw------- 1 jmcdonald cpp  1317 Oct  3 20:15 palindrometester.java.save
+-rw------- 1 jmcdonald cpp   486 Oct  1 21:18 palindrometester.java]
+-rw------- 1 jmcdonald cpp  5216 Oct  3 21:48 pj3.txt
+-rw------- 1 jmcdonald cpp 12132 Oct 14 11:58 pj4.txt
+-rw------- 1 jmcdonald cpp  8939 Oct 24 22:11 pj5.txt
+-rw------- 1 jmcdonald cpp     0 Oct 28 10:53 pj6.txt
+jmcdonald@abbott ~/cs1400/project $ cat DriverTest.java
+import java.util.Scanner;
+
+// Jeffrey McDonald
+// CS1400, section 01
+// Project 6 - Driver License Exam
+// 10/30/2018
+
+public class DriverTest
+{
+   public static void main(String []args)
+   {
+
+      Scanner kb = new Scanner(System.in);
+      char[] correct= {'A','A','A','A','A','B','B','B','B','B','C','C','C','C','C','D','D','D','D','D'};
+      char[] student = new char[20];
+      System.out.println("Enter your answers to the exam questions.");
+      for(int i = 0; i<student.length; i++)
+      {
+         System.out.print("Question "+ (i+1) + ": ");
+         String input = kb.nextLine();
+         String convert = input.toUpperCase();
+         char answer = convert.charAt(0);
+         student[i]= answer;
+      }
+
+
+      int incorrectAns = gradeExam(correct,student);
+      int correctAns = 20;
+      correctAns -= incorrectAns;
+      int[] missedArray = makeMissedArray(correct ,student, incorrectAns);
+
+      System.out.println("** Correct Answers: "+ correctAns);
+      System.out.println("** Incorrect Answers: "+incorrectAns);
+      if(incorrectAns > 5)
+      System.out.println("You failed the exam. ");
+      else
+      System.out.println("You passed the exam! ");
+
+
+      if(incorrectAns>=1)
+      {
+      System.out.println("You missed the following questions:");
+      for(int i=0;i<incorrectAns;i++)
+         {
+          System.out.print(missedArray[i] + " ");
+         }
+      }
+      System.out.println("");
+   }
+
+
+
+   public static int gradeExam(char[] correct, char[] student)
+   {
+      int incorrectAns=0;
+      for(int i = 0; i<student.length;i++)
+      {
+         if(correct[i]!= student[i])
+         incorrectAns++;
+      }
+      return incorrectAns;
+   }
+
+   public static int[] makeMissedArray(char[] correct, char[] student, int incorrectAns)
+   {
+      int[] missedArray = new int[incorrectAns];
+      int k = 0;
+      for(int i=0; i<student.length;i++)
+      {
+         if(correct[i]!= student[i])
+         {
+            missedArray[k]=i+1;
+            k++;
+         }
+      }
+      return missedArray;
+   }
+}
+
+jmcdonald@abbott ~/cs1400/project $ java DriverTest
+Enter your answers to the exam questions.
+Question 1: g
+Question 2: g
+Question 3: g
+Question 4: g
+Question 5: g
+Question 6: g
+Question 7: g
+Question 8: g
+Question 9: g
+Question 10: g
+Question 11: g
+Question 12: g
+Question 13: g
+Question 14: g
+Question 15: g
+Question 16: g
+Question 17: g
+Question 18: g
+Question 19: g
+Question 20: g
+** Correct Answers: 0
+** Incorrect Answers: 20
+You failed the exam.
+You missed the following questions:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+jmcdonald@abbott ~/cs1400/project $ java DriverTest
+Enter your answers to the exam questions.
+Question 1: h
+Question 2: h
+Question 3: h
+Question 4: h
+Question 5: h
+Question 6: h
+Question 7: b
+Question 8: b
+Question 9: b
+Question 10: b
+Question 11: c
+Question 12: c
+Question 13: c
+Question 14: c
+Question 15: c
+Question 16: d
+Question 17: d
+Question 18: d
+Question 19: d
+Question 20: d
+** Correct Answers: 14
+** Incorrect Answers: 6
+You failed the exam.
+You missed the following questions:
+1 2 3 4 5 6
+jmcdonald@abbott ~/cs1400/project $ java DriverTest
+Enter your answers to the exam questions.
+Question 1: A
+Question 2: A
+Question 3: B
+Question 4: A
+Question 5: B
+Question 6: B
+Question 7: C
+Question 8: A
+Question 9: C
+Question 10: B
+Question 11: C
+Question 12: C
+Question 13: C
+Question 14: C
+Question 15: C
+Question 16: D
+Question 17: D
+Question 18: D
+Question 19: D
+Question 20: D
+** Correct Answers: 15
+** Incorrect Answers: 5
+You passed the exam!
+You missed the following questions:
+3 5 7 8 9
+jmcdonald@abbott ~/cs1400/project $ java DriverTest
+Enter your answers to the exam questions.
+Question 1: A
+Question 2: a
+Question 3: A
+Question 4: a
+Question 5: A
+Question 6: b
+Question 7: B
+Question 8: b
+Question 9: B
+Question 10: b
+Question 11: C
+Question 12: c
+Question 13: C
+Question 14: c
+Question 15: C
+Question 16: D
+Question 17: d
+Question 18: D
+Question 19: d
+Question 20: D
+** Correct Answers: 20
+** Incorrect Answers: 0
+You passed the exam!
+jmcdonald@abbott ~/cs1400/project $ java DriverTest
+Enter your answers to the exam questions.
+Question 1: J
+Question 2: S
+Question 3: Y
+Question 4: T
+Question 5: d
+Question 6: S
+Question 7: B
+Question 8: b
+Question 9: B
+Question 10: b
+Question 11: C
+Question 12: c
+Question 13: C
+Question 14: c
+Question 15: C
+Question 16: d
+Question 17: D
+Question 18: d
+Question 19: D
+Question 20: d
+** Correct Answers: 14
+** Incorrect Answers: 6
+You failed the exam.
+You missed the following questions:
+1 2 3 4 5 6
+jmcdonald@abbott ~/cs1400/project $ exit script
+exit
+bash: exit: script: numeric argument required
+
+Script done on 2018-10-28 10:58:33-07:00

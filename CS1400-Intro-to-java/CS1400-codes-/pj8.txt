@@ -1,0 +1,297 @@
+jmcdonald@abbott ~/cs1400/project $ pwd
+/user/jmcdonald/cs1400/project
+jmcdonald@abbott ~/cs1400/project $ ls -l
+total 146
+-rw------- 1 jmcdonald cpp  1935 Oct 28 10:51 DriverTest.class
+-rw------- 1 jmcdonald cpp  2110 Oct 27 22:11 DriverTest.java
+-rw------- 1 jmcdonald cpp  2036 Oct 27 16:43 DriverTest.java.save
+-rw------- 1 jmcdonald cpp  1712 Nov 21 19:45 Employee.class
+-rw------- 1 jmcdonald cpp  1641 Nov 21 19:44 Employee.java
+-rw------- 1 jmcdonald cpp  2973 Nov 19 16:09 Fraction.class
+-rw------- 1 jmcdonald cpp  5487 Nov 19 16:04 Fraction.java
+-rw------- 1 jmcdonald cpp  1690 Nov 16 20:12 Fraction.java.save
+-rw------- 1 jmcdonald cpp  1818 Nov 19 16:19 FractionTest.class
+-rw------- 1 jmcdonald cpp  1476 Nov 19 16:14 FractionTest.java
+-rw------- 1 jmcdonald cpp  1073 Sep  6 16:15 InputOutput.class
+-rw------- 1 jmcdonald cpp   757 Sep  6 16:15 InputOutput.java
+-rw------- 1 jmcdonald cpp   514 Sep  6 16:08 InputToOutput.java
+-rw------- 1 jmcdonald cpp   523 Sep  6 15:57 InputToOutputjava
+-rw------- 1 jmcdonald cpp     0 Oct 24 22:13 Invalid
+-rw------- 1 jmcdonald cpp  2959 Oct 14 11:55 MethodRPS.class
+-rw------- 1 jmcdonald cpp  4872 Oct 14 11:54 MethodRPS.java
+-rw------- 1 jmcdonald cpp  2273 Nov 21 23:21 ProductionWorker.class
+-rw------- 1 jmcdonald cpp  2583 Nov 21 23:21 ProductionWorker.java
+-rw------- 1 jmcdonald cpp  2213 Sep 15 13:45 Season.class
+-rw------- 1 jmcdonald cpp  2868 Sep 15 13:45 Season.java
+-rw------- 1 jmcdonald cpp   506 Sep 13 14:40 Season.java.save
+-rw------- 1 jmcdonald cpp  1557 Oct 24 22:10 Temperature.class
+-rw------- 1 jmcdonald cpp  1801 Oct 24 16:31 Temperature.java
+-rw------- 1 jmcdonald cpp  2792 Oct 24 22:11 TemperatureTest.class
+-rw------- 1 jmcdonald cpp  2833 Oct 24 16:32 TemperatureTest.java
+-rw------- 1 jmcdonald cpp   986 Sep  8 22:22 TimeConversionToHMS.class
+-rw------- 1 jmcdonald cpp   757 Sep  8 22:21 TimeConversionToHMS.java
+-rw------- 1 jmcdonald cpp  1071 Sep  8 22:19 TimeConversionToSecond.class
+-rw------- 1 jmcdonald cpp   875 Sep  7 23:07 TimeConversionToSecond.java
+-rw------- 1 jmcdonald cpp  1774 Nov 21 23:21 WorkerTest.class
+-rw------- 1 jmcdonald cpp  1171 Nov 21 23:20 WorkerTest.java
+-rw------- 1 jmcdonald cpp     0 Oct 24 22:13 exit
+-rw------- 1 jmcdonald cpp     0 Oct 24 22:13 jmcdonald@abbott
+-rw------- 1 jmcdonald cpp  1481 Oct  3 21:44 palindrometester.class
+-rw------- 1 jmcdonald cpp  1459 Oct 21 09:49 palindrometester.java
+-rw------- 1 jmcdonald cpp  1317 Oct  3 20:15 palindrometester.java.save
+-rw------- 1 jmcdonald cpp   486 Oct  1 21:18 palindrometester.java]
+-rw------- 1 jmcdonald cpp  5216 Oct  3 21:48 pj3.txt
+-rw------- 1 jmcdonald cpp 12132 Oct 14 11:58 pj4.txt
+-rw------- 1 jmcdonald cpp  8939 Oct 24 22:11 pj5.txt
+-rw------- 1 jmcdonald cpp  9477 Oct 28 10:58 pj6.txt
+-rw------- 1 jmcdonald cpp 15043 Nov 19 16:23 pj7.txt
+-rw------- 1 jmcdonald cpp     0 Nov 21 23:21 pj8.txt
+jmcdonald@abbott ~/cs1400/project $ cat Employee.java
+// Jeffrey McDonald
+// CS1400, section 01
+// Project 8 - inheritence
+// 11/27/2018
+
+public class Employee
+{
+   private String name;
+   private String number;
+   private String hireDate;
+
+
+   private static boolean isValidName(String id)
+   {
+      if(id.length()!=5)
+      return false;
+
+      for(int i =0;i<3;i++)
+      {
+      if(!Character.isDigit(id.charAt(0)))
+      return false;
+      }
+
+      if(!Character.isUpperCase(id.charAt(4)))
+      return false;
+
+      return true;
+   }
+
+   public Employee()
+   {
+      name = "";
+      number = "";
+      hireDate= "";
+   }
+
+   public Employee(String person, String id, String firstDay)
+   {
+      name = person;
+      number = id;
+      hireDate= firstDay;
+      boolean valid = isValidName(id);
+      if(valid==false)
+      number = "";
+   }
+
+   public void setName(String person)
+   {
+      name = person;
+   }
+
+   public void setNumber(String id)
+   {
+      number = id;
+   }
+
+   public void setDate(String firstDay)
+   {
+      hireDate = firstDay;
+   }
+
+   public String getName()
+   {
+   return name;
+   }
+
+   public String getNumber()
+   {
+   return number;
+   }
+
+   public String getDate()
+   {
+   return hireDate;
+   }
+
+   public String toString()
+   {
+      String str = "Name: " + name +
+                   "\nEmployee Number: " + number +
+                   "\nHire Date: " + hireDate;
+
+      String str2 = "Name: " + name +
+                    "\nEmployee Number: Invalid Employee Number" +
+                    "\nHire Date: " + hireDate;
+
+      if(number.equals(""))
+      return str2;
+
+      else
+      return str;
+   }
+
+
+
+}
+jmcdonald@abbott ~/cs1400/project $ cat ProductionWorker.java
+import java.text.DecimalFormat;
+
+// Jeffrey McDonald
+// CS1400, Section 01
+// Project 8 - inheritance
+// 11/21/2018
+
+public class ProductionWorker extends Employee
+{
+
+   private String name;
+   private String number;
+   private String hireDate;
+   private int shift;
+   private double hourlyRate;
+
+   private static boolean isValidName(String id)
+   {
+      if(id.length()!=5)
+      return false;
+
+      for(int i =0;i<3;i++)
+      {
+      if(!Character.isDigit(id.charAt(0)))
+      return false;
+      }
+
+      if(!Character.isUpperCase(id.charAt(4)))
+      return false;
+
+      return true;
+   }
+
+   public ProductionWorker()
+   {
+      name = "";
+      number = "";
+      hireDate= "";
+      shift = 1;
+      hourlyRate = 0.0;
+   }
+
+   public ProductionWorker(String person, String id, String firstDay, int time, double pay)
+   {
+      name = person;
+      number = id;
+      hireDate= firstDay;
+      shift = time;
+      hourlyRate = pay;
+      boolean valid = isValidName(id);
+
+      if(valid==false)
+      number = "";
+   }
+
+   public void setShift(int time)
+   {
+      shift = time;
+   }
+
+   public void setRate(double pay)
+   {
+      hourlyRate = pay;
+   }
+
+   public String getShift()
+   {
+   String blank,Day,Night,invalid;
+   Day = "day";
+   Night = "night";
+   invalid = "Invalid Shift";
+   blank = "";
+   if(shift == 1)
+   return Day;
+
+   else if(shift == 2)
+   return Night;
+
+   else if(shift!=1 || shift!=2)
+   return invalid;
+
+   else
+   return blank;
+   }
+
+   public double getRate()
+   {
+   return hourlyRate;
+   }
+
+   public String toString()
+   {
+      DecimalFormat format = new DecimalFormat("#.00");
+
+      String str = "Name: " + name +
+                   "\nEmployee Number: " + number +
+                   "\nHire Date: " + hireDate +
+                   "\nShift: day"+
+                   "\nHourly Pay Rate: $"+ format.format(hourlyRate);
+
+      String str2 = "Name: " + name +
+                    "\nEmployee Number: Invalid Employee Number" +
+                    "\nHire Date: " + hireDate +
+                    "\nShift: night"+
+                    "\nHourly Pay Rate: "+ format.format(hourlyRate);
+
+      String str3 = "Name: " + name +
+                    "\nEmployee Number: Invalid Employee Number" +
+                    "\nHire Date: " + hireDate +
+                    "\nShift: invalid shift"+
+                    "\nHourly Pay Rate: $"+ format.format(hourlyRate);
+
+
+      if(number.equals("")&& (shift!=1 || shift!=2))
+      return str3;
+
+      else if(shift==1)
+      return str;
+
+      else
+      return str2;
+   }
+
+}
+jmcdonald@abbott ~/cs1400/project $ javac WorkerTest.java
+jmcdonald@abbott ~/cs1400/project $ java WorkerTest
+Here's the first production worker.
+Name: John Smith
+Employee Number: 123-A
+Hire Date: 11-15-2005
+Shift: day
+Hourly Pay Rate: $23.50
+
+Here's the second production worker.
+Name: Joan Jones
+Number: 222-L
+Hire Date 12-12-2018
+Shift: night
+Hourly pay rate: $18.50
+
+Here's the third production worker.
+Name: Tony Gaddis
+Employee Number: Invalid Employee Number
+Hire Date: 1-23-2006
+Shift: invalid shift
+Hourly Pay Rate: $19.50
+jmcdonald@abbott ~/cs1400/project $ exit script
+exit
+bash: exit: script: numeric argument required
+
+Script done on 2018-11-21 23:23:01-08:00

@@ -1,0 +1,242 @@
+/user/jmcdonald/cs1400/project
+
+InputOutput.class
+InputOutput.java
+InputToOutput.java
+InputToOutputjava
+Season.class
+Season.java
+Season.java.save
+TimeConversionToHMS.class
+TimeConversionToHMS.java
+TimeConversionToSecond.class
+TimeConversionToSecond.java
+
+// Jeffrey McDonald
+// CS1400, section 01
+// Project 2 - determining the seasons
+// 9/18/2018
+
+import java.util.Scanner;
+
+public class Season
+{
+  public static void main(String []args)
+  {
+     int day,month;
+     Scanner keyboard = new Scanner(System.in);
+     System.out.print (" enter month (1-12): ");
+     month = keyboard.nextInt();
+
+     if (month<1)
+     {
+      System.out.print(" Invalid Month!");
+      System.exit(0);
+     }
+
+     if (month>12)
+     {
+      System.out.print(" Invalid Month!");
+      System.exit(0);
+     }
+
+     System.out.print (" enter day (1-31): ");
+     day = keyboard.nextInt();
+     if (day<1)
+     {
+      System.out.print(" Invalid Day!");
+      System.exit(0);
+     }
+
+     if (day>31)
+     {
+      System.out.print(" Invalid Day!");
+      System.exit(0);
+     }
+
+     if (month==2)
+     if (day>28)
+     {
+      System.out.print(" Invalid Day!");
+      System.exit(0);
+     }
+
+     if (month==4)
+     if (day>30)
+     {
+      System.out.print(" Invalid Day!");
+      System.exit(0);
+     }
+
+     if (month==6)
+     if (day>30)
+     {
+      System.out.print(" Invalid Day!");
+      System.exit(0);
+     }
+
+     if (month==9)
+     if (day>30)
+     {
+      System.out.print(" Invalid Day!");
+      System.exit(0);
+     }
+
+     if (month==11)
+     if (day>30)
+     {
+      System.out.print(" Invalid Day!");
+      System.exit(0);
+     }
+
+     if(month==3)
+     if(day>=21)
+     if(day<=31)
+     System.out.print(month + "/" + day + (" is in the spring season."));
+
+     if(month>=4)
+     if(month<=5)
+     if(day>=1)
+     if(day<=31)
+     System.out.print(month + "/" + day + (" is in the spring season."));
+
+     if(month==6)
+     if(day>=1)
+     if(day<=20)
+     System.out.print(month + "/" + day + (" is in the Spring season."));
+     else
+     System.out.print(month + "/" + day + (" is in the Summer season."));
+
+     if(month>=7)
+     if(month<=8)
+     if(day>=1)
+     if(day<=31)
+     System.out.print(month + "/" + day + (" is in the Summer season."));
+
+     if(month==9)
+     if(day>=1)
+     if(day<=20)
+     System.out.print(month + "/" + day + (" is in the Summer season."));
+     else
+     System.out.print(month + "/" + day + (" is in the Fall Season."));
+
+     if(month>=10)
+     if(month<=11)
+     System.out.print(month + "/" + day + (" is in the Fall Season."));
+
+     if(month==12)
+     if(day>=1)
+     if(day<=20)
+     System.out.print(month + "/" + day + (" is in the Fall Season."));
+     else
+     System.out.print(month + "/" + day + (" is in the Winter Season."));
+
+
+     if(month>=1)
+     if(month<=2)
+     if(day>=1)
+     if(day<=31)
+     System.out.print(month + "/" + day + (" is in the Winter season."));
+
+     if(month==3)
+     if(day>=1)
+     if(day<=20)
+     System.out.print(month + "/" + day + (" is in the Winter Season."));
+
+  }
+}
+
+
+ javac Season.java
+
+enter month (1-12): 1
+ enter day (1-31): 5
+1/5 is in the Winter season.
+
+ enter month (1-12): 2
+ enter day (1-31): 5
+2/5 is in the Winter season.
+
+ enter month (1-12): 4
+ enter day (1-31): 10
+4/10 is in the spring season.
+
+ enter month (1-12): 5
+ enter day (1-31): 10
+5/10 is in the spring season.
+
+ enter month (1-12): 7
+ enter day (1-31): 15
+7/15 is in the Summer season.
+
+ enter month (1-12): 8
+ enter day (1-31): 15
+8/15 is in the Summer season.
+
+ enter month (1-12): 10
+ enter day (1-31): 20
+10/20 is in the Fall Season.
+
+ enter month (1-12): 11
+ enter day (1-31): 20
+11/20 is in the Fall Season.
+
+ enter month (1-12): 3
+ enter day (1-31): 20
+3/20 is in the Winter Season.
+
+ enter month (1-12): 3
+ enter day (1-31): 21
+3/21 is in the spring season.
+
+ enter month (1-12): 6
+ enter day (1-31): 20
+6/20 is in the Spring season.
+
+ enter month (1-12): 6
+ enter day (1-31): 21
+6/21 is in the Summer season.
+
+ enter month (1-12): 9
+ enter day (1-31): 20
+9/20 is in the Summer season.
+
+enter month (1-12): 9
+ enter day (1-31): 21
+9/21 is in the Fall Season.
+
+ enter month (1-12): 12
+ enter day (1-31): 20
+12/20 is in the Fall Season.
+
+ enter month (1-12): 12
+ enter day (1-31): 21
+12/21 is in the Winter Season.
+
+ enter month (1-12): 0
+ Invalid Month!
+
+ enter month (1-12): -3
+ Invalid Month!
+
+enter month (1-12): 13
+ Invalid Month!
+
+ enter month (1-12): 1
+ enter day (1-31): 0
+
+ enter month (1-12): 1
+ enter day (1-31): -5
+ Invalid Day!
+
+ enter month (1-12): 2
+ enter day (1-31): 29
+ Invalid Day!
+
+ enter month (1-12): 6
+ enter day (1-31): 31
+ Invalid Day!
+
+ enter month (1-12): 12
+ enter day (1-31): 32
+ Invalid Day!

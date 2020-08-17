@@ -1,0 +1,176 @@
+
+Script done, file is lab6.txt
+jmcdonald@abbott ~/cs1400/lab $ cat lab6.txt
+Script started on 2018-12-06 11:56:33-08:00
+jmcdonald@abbott ~/cs1400/lab $ pwd
+/user/jmcdonald/cs1400/lab
+jmcdonald@abbott ~/cs1400/lab $ ls -l
+total 83
+-rw------- 1 jmcdonald cpp  866 Dec  6 10:36  AccountTest.class
+-rw------- 1 jmcdonald cpp  420 Dec  4 11:39  AccountTest.java
+-rw------- 1 jmcdonald cpp 1162 Dec  6 10:35  BankAccount.class
+-rw------- 1 jmcdonald cpp 1019 Dec  6 10:35  BankAccount.java
+-rw------- 1 jmcdonald cpp 2210 Sep 19 19:09  Bill.class
+-rw------- 1 jmcdonald cpp 2329 Sep 19 19:09  Bill.java
+-rw------- 1 jmcdonald cpp 1208 Dec  6 11:55  Grades.class
+-rw------- 1 jmcdonald cpp 1262 Dec  6 11:55  Grades.java
+-rw------- 1 jmcdonald cpp 1203 Dec  6 11:44 "Grades.java'"
+-rw------- 1 jmcdonald cpp 1103 Dec  6 11:55  GradesTest.class
+-rw------- 1 jmcdonald cpp  547 Dec  6 11:54  GradesTest.java
+-rw------- 1 jmcdonald cpp  725 Oct  9 10:43  HollowSquare.class
+-rw------- 1 jmcdonald cpp  444 Oct  9 11:06  HollowSquare.java
+-rw------- 1 jmcdonald cpp  749 Nov 15 22:11  HotDogStand.class
+-rw------- 1 jmcdonald cpp  531 Nov 15 19:23  HotDogStand.java
+-rw------- 1 jmcdonald cpp 1325 Nov 15 22:11  HotDogTest.class
+-rw------- 1 jmcdonald cpp 1389 Nov 15 14:27  HotDogTest.java
+-rw------- 1 jmcdonald cpp  559 Nov 15 13:45  HotDogTest.java.save
+-rw------- 1 jmcdonald cpp 1051 Oct 30 11:47  NameSearch.class
+-rw------- 1 jmcdonald cpp 1405 Oct 30 20:58  NameSearch.java
+-rw------- 1 jmcdonald cpp 1348 Oct 30 14:28  NameSearch.java.save
+-rw------- 1 jmcdonald cpp  580 Dec  6 10:35  NegativeDepositException.class
+-rw------- 1 jmcdonald cpp  260 Dec  4 11:26  NegativeDepositException.java
+-rw------- 1 jmcdonald cpp  613 Dec  6 10:35  NegativeStartingBalanceException.class
+-rw------- 1 jmcdonald cpp  301 Dec  4 11:41  NegativeStartingBalanceException.java
+-rw------- 1 jmcdonald cpp  598 Dec  6 10:35  NegativeWithdrawException.class
+-rw------- 1 jmcdonald cpp  281 Dec  4 11:32  NegativeWithdrawException.java
+-rw------- 1 jmcdonald cpp  528 Dec  6 10:35  OverDrawException.class
+-rw------- 1 jmcdonald cpp  223 Dec  6 10:36  OverDrawException.java
+-rw------- 1 jmcdonald cpp  815 Nov 15 19:45  PhoneBookEntry.class
+-rw------- 1 jmcdonald cpp  635 Nov 15 19:42  PhoneBookEntry.java
+-rw------- 1 jmcdonald cpp 1713 Nov 15 22:04  PhoneBookTest.class
+-rw------- 1 jmcdonald cpp 1331 Nov 15 22:01  PhoneBookTest.java
+-rw------- 1 jmcdonald cpp  869 Oct  9 11:43  PrimeChecker.class
+-rw------- 1 jmcdonald cpp  658 Oct 10 23:18  PrimeChecker.java
+-rw------- 1 jmcdonald cpp  658 Oct 30 11:07  SavingsAccount.java
+-rw------- 1 jmcdonald cpp  974 Oct 30 11:40  SavingsAccountTest.java
+-rw------- 1 jmcdonald cpp  175 Dec  6 11:45  Statistics.class
+-rw------- 1 jmcdonald cpp  165 Dec  6 11:32  Statistics.java
+-rw------- 1 jmcdonald cpp 1347 Oct 30 10:25  boys.txt
+-rw------- 1 jmcdonald cpp 1438 Oct 30 10:26  girls.txt
+-rw------- 1 jmcdonald cpp 6159 Oct 30 21:00  lab4.txt
+-rw------- 1 jmcdonald cpp 6987 Nov 15 22:12  lab5.txt
+-rw------- 1 jmcdonald cpp    0 Dec  6 11:56  lab6.txt
+jmcdonald@abbott ~/cs1400/lab $ cat Statistics.java
+// Jeffrey McDonald
+// CS1400, section 01
+// Lab 6
+// 12/6/2018
+
+
+public interface Statistics
+{
+   double getAverage();
+   int getHighest();
+   int getLowest();
+}
+jmcdonald@abbott ~/cs1400/lab $ cat Grades.java
+import java.util.Scanner;
+// Jeffrey McDonald
+// CS1400, Section 1
+// Lab 6
+// 12/6/2018
+
+public class Grades implements Statistics
+{
+   protected int[] scores;
+   protected int numOfScores;
+
+   public Grades(int n)
+   {
+      if(n==0)
+      {
+      System.out.print("Cannot have 0!");
+      System.exit(0);
+      }
+      numOfScores = n;
+      scores = new int[numOfScores];
+   }
+
+   public void read()
+   {
+      Scanner kb = new Scanner(System.in);
+      for(int i =0;i<scores.length;i++)
+      {
+         System.out.print("Enter Score:");
+         scores[i] = kb.nextInt();
+      }
+
+
+   }
+
+   public double getAverage()
+   {
+      double total = 0;
+      for(int i = 0;i<scores.length;i++)
+      {
+          total+=scores[i];
+      }
+
+      double average=(total/scores.length);
+      return average;
+   }
+
+   public int getHighest()
+   {
+      int highest = scores[0];
+      for(int i=1; i<scores.length;i++)
+      {
+         if(highest < scores[i])
+         highest=scores[i];
+      }
+      return highest;
+   }
+
+   public int getLowest()
+   {
+      int lowest = scores[0];
+      for(int i=1;i<scores.length;i++)
+      {
+         if(lowest>scores[i])
+         lowest =scores[i];
+      }
+      return lowest;
+   }
+
+}
+jmcdonald@abbott ~/cs1400/lab $ cat GradesTest.java
+import java.util.Scanner;
+
+// Jeffrey McDonald
+// CS1400 , Section 01
+// Lab 6
+// 12/06/2018
+
+public class GradesTest
+{
+   public static void main(String []args)
+   {
+      System.out.print("How many scores?:");
+      Scanner kb = new Scanner(System.in);
+      int userScores = kb.nextInt();
+      Grades score1 = new Grades(userScores);
+      score1.read();
+      System.out.println("Average:"+score1.getAverage());
+      System.out.println("Highest:"+score1.getHighest());
+      System.out.println("Lowest:"+score1.getLowest());
+   }
+
+
+
+}
+jmcdonald@abbott ~/cs1400/lab $ javac GradesTest.java
+jmcdonald@abbott ~/cs1400/lab $ java GradesTest
+How many scores?:5
+Enter Score:60
+Enter Score:70
+Enter Score:80
+Enter Score:90
+Enter Score:100
+Average:80.0
+Highest:100
+Lowest:60
+jmcdonald@abbott ~/cs1400/lab $ exit script
+exit
+bash: exit: script: numeric argument required
+
+Script done on 2018-12-06 11:57:31-08:00

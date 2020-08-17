@@ -1,0 +1,177 @@
+/user/jmcdonald/cs1400/project
+InputOutput.class
+InputOutput.java
+InputToOutput.java
+InputToOutputjava
+TimeConversionToHMS.class
+TimeConversionToHMS.java
+TimeConversionToSecond.class
+TimeConversionToSecond.java
+
+// Jeffrey McDonald
+// CS1400, section 01
+// Project 1 - Time Conversion
+// 9/11/2018
+
+
+import java.util.Scanner;
+
+public class TimeConversionToSecond
+ {
+   public static void main(String[] args)
+   {
+      int hours,minutes,seconds;
+      Scanner keyboard = new Scanner(System.in);
+
+      System.out.print("enter number of hours: ");
+      hours = keyboard.nextInt();
+      System.out.print("enter number of minutes: ");
+      minutes = keyboard.nextInt();
+      System.out.print("enter number of seconds: ");
+      seconds = keyboard.nextInt();
+
+      int total = seconds + 60*minutes + 3600*hours;
+
+      System.out.println(hours + " hours,"
+                         +  minutes + " minutes,"
+                         +  seconds + " seconds"
+                         +  " is equivalent to "
+                         +  total +  " seconds");
+    }
+  }
+
+javac TimeConversionToSecond.java
+
+enter number of hours: 0
+enter number of minutes: 0
+enter number of seconds: 0
+0 hours,0 minutes,0 seconds is equivalent to 0 seconds
+
+
+enter number of hours: 0
+enter number of minutes: 1
+enter number of seconds: 2
+0 hours,1 minutes,2 seconds is equivalent to 62 seconds
+
+enter number of hours: 3
+enter number of minutes: 0
+enter number of seconds: 4
+3 hours,0 minutes,4 seconds is equivalent to 10804 seconds
+
+enter number of hours: 5
+enter number of minutes: 6
+enter number of seconds: 0
+5 hours,6 minutes,0 seconds is equivalent to 18360 seconds
+
+enter number of hours: 0
+enter number of minutes: 0
+enter number of seconds: 25
+0 hours,0 minutes,25 seconds is equivalent to 25 seconds
+
+enter number of hours: 0
+enter number of minutes: 25
+enter number of seconds: 0
+0 hours,25 minutes,0 seconds is equivalent to 1500 seconds
+
+enter number of hours: 25
+enter number of minutes: 0
+enter number of seconds: 0
+25 hours,0 minutes,0 seconds is equivalent to 90000 seconds
+
+enter number of hours: 1
+enter number of minutes: 28
+enter number of seconds: 42
+1 hours,28 minutes,42 seconds is equivalent to 5322 seconds
+
+enter number of hours: 2
+enter number of minutes: 46
+enter number of seconds: 39
+2 hours,46 minutes,39 seconds is equivalent to 9999 seconds
+
+enter number of hours: 100
+enter number of minutes: 10
+enter number of seconds: 1
+100 hours,10 minutes,1 seconds is equivalent to 360601 seconds
+
+// Jeffrey McDonald
+// CS1400, section 01
+// Project 1 - Time Conversion
+// 9/11/2018
+
+import java.util.Scanner;
+
+public class TimeConversionToHMS
+ {
+   public static void main(String[] args)
+   {
+   int hours,minutes,seconds,totalseconds;
+   Scanner keyboard = new Scanner(System.in);
+
+   System.out.print("enter total seconds: ");
+   totalseconds = keyboard.nextInt();
+
+   hours =   (totalseconds)/3600;
+   minutes = (totalseconds)%3600/ 60;
+   seconds = (totalseconds)%3600% 60;
+
+   System.out.println(totalseconds  + "  seconds is equivalent to "
+                                    +   hours + " hours, "
+                                    +   minutes + "  minutes, "
+                                    +   seconds + "  seconds  ");
+   }
+ }
+
+javac TimeConversionToHMS.java
+
+enter total seconds: 0
+0  seconds is equivalent to 0 hours, 0  minutes, 0  seconds
+
+enter total seconds: 35
+35  seconds is equivalent to 0 hours, 0  minutes, 35  seconds
+
+enter total seconds: 60
+60  seconds is equivalent to 0 hours, 1  minutes, 0  seconds
+
+enter total seconds: 123
+123  seconds is equivalent to 0 hours, 2  minutes, 3  seconds
+
+enter total seconds: 3600
+3600  seconds is equivalent to 1 hours, 0  minutes, 0  seconds
+
+enter total seconds: 3661
+3661  seconds is equivalent to 1 hours, 1  minutes, 1  seconds
+
+enter total seconds: 5332
+5332  seconds is equivalent to 1 hours, 28  minutes, 52  seconds
+
+enter total seconds: 9999
+9999  seconds is equivalent to 2 hours, 46  minutes, 39  seconds
+
+enter total seconds: 102030
+102030  seconds is equivalent to 28 hours, 20  minutes, 30  seconds
+
+enter total seconds: 123456789
+123456789  seconds is equivalent to 34293 hours, 33  minutes, 9  seconds
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

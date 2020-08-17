@@ -1,0 +1,240 @@
+Script started on 2018-11-15 22:03:16-08:00
+jmcdonald@abbott ~/cs1400/lab $ pwd
+/user/jmcdonald/cs1400/lab
+jmcdonald@abbott ~/cs1400/lab $ cat PhoneBookEntry.java
+
+
+// Jeffrey McDonald
+// CS1400, section 1
+// Lab 5 - phonebook
+// 11/15/2018
+
+public class PhoneBookEntry
+{
+   private String person;
+   private String phone;
+
+   public PhoneBookEntry(String name, String number)
+   {
+      person = name;
+      phone = number;
+   }
+
+   public void setName(String name)
+   {
+      person = name;
+   }
+
+   public void setNumber(String number)
+   {
+      number = phone;
+   }
+
+   public String getName()
+   {
+      return person;
+   }
+
+   public String getPhone()
+   {
+      return phone;
+   }
+
+   public String toString()
+   {
+      String str = person + "," + phone;
+      return str;
+   }
+}
+jmcdonald@abbott ~/cs1400/lab $ cat PhoneBookTest.java
+
+import java.util.Scanner;
+import java.util.ArrayList;
+
+// Jeffrey McDonald
+// CS1400, Section 1
+// Lab 5 - Phone Book
+// 11/15/2018
+
+public class PhoneBookTest
+{
+   public static void main(String []args)
+   {
+      Scanner kb = new Scanner(System.in);
+      System.out.println("Please enter 5 names and phone numbers ");
+      ArrayList<PhoneBookEntry> phoneBook = new ArrayList<PhoneBookEntry>();
+      for(int i =0; i<5; i++)
+      {
+      System.out.print("Please enter a person's name: ");
+      String name = kb.nextLine();
+      System.out.print("Enter that person's phone number: ");
+      String phone = kb.nextLine();
+      phoneBook.add(new PhoneBookEntry(name , phone));
+      }
+      System.out.println("");
+      System.out.println("Here's the data you entered:");
+      for(int i= 0; i<phoneBook.size(); i++)
+      System.out.println("("+phoneBook.get(i)+")");
+      System.out.println("");
+      String myName= "Jeffrey McDonald";
+      String myNum= "563-8978";
+
+      phoneBook.add(0,new PhoneBookEntry(myName,myNum));
+      for(int i = 0; i<phoneBook.size(); i++)
+      System.out.println("("+phoneBook.get(i)+")");
+      phoneBook.remove(5);
+      System.out.println("");
+      for(int i = 0; i<phoneBook.size(); i++)
+      System.out.println("("+phoneBook.get(i)+")");
+   }
+
+
+}
+jmcdonald@abbott ~/cs1400/lab $ javac PhoneBookTest.java
+jmcdonald@abbott ~/cs1400/lab $ java PhoneBookTest
+Please enter 5 names and phone numbers
+Please enter a person's name: Reimu Hakurei
+Enter that person's phone number: 968-7473
+Please enter a person's name: Marisa Kirasame
+Enter that person's phone number: 154-8974
+Please enter a person's name: Sanae Kochiya
+Enter that person's phone number: 798-9798
+Please enter a person's name: Reisen Udongein Inaba
+Enter that person's phone number: 457-8971
+Please enter a person's name: Junko
+Enter that person's phone number: 464-7987
+
+Here's the data you entered:
+(Reimu Hakurei,968-7473)
+(Marisa Kirasame,154-8974)
+(Sanae Kochiya,798-9798)
+(Reisen Udongein Inaba,457-8971)
+(Junko,464-7987)
+
+(Jeffrey McDonald,563-8978)
+(Reimu Hakurei,968-7473)
+(Marisa Kirasame,154-8974)
+(Sanae Kochiya,798-9798)
+(Reisen Udongein Inaba,457-8971)
+(Junko,464-7987)
+
+(Jeffrey McDonald,563-8978)
+(Reimu Hakurei,968-7473)
+(Marisa Kirasame,154-8974)
+(Sanae Kochiya,798-9798)
+(Reisen Udongein Inaba,457-8971)
+jmcdonald@abbott ~/cs1400/lab $ cat HotDogStand.java
+// Jeffrey McDonald
+// CS1400, Section 01
+// lab 5 - Hot Dog Stand
+// 11/15/2018
+
+public class HotDogStand
+{
+   private int id;
+   private int sold;
+   private static int total;
+
+   public HotDogStand(int num, int inventory)
+   {
+      id = num;
+      sold = inventory;
+   }
+
+   public void justSold()
+   {
+      sold++;
+      total++;
+   }
+
+   public static int totalSold()
+   {
+      return total;
+   }
+
+   public String toString()
+   {
+      String str = "Stand "+ id + " sold " + sold + " Hotdogs.";
+      return str;
+   }
+
+}
+jmcdonald@abbott ~/cs1400/lab $ cat HotDogTest.java
+
+// Jeffrey McDonald
+// CS1400, Section 1
+// Lab 5 - Hot dog stand
+// 11/15/2018
+
+public class HotDogTest
+{
+   public static void main(String []args)
+   {
+      HotDogStand HotDog1 = new HotDogStand(1,0);
+      HotDogStand HotDog2 = new HotDogStand(2,0);
+      HotDogStand HotDog3 = new HotDogStand(3,0);
+      for(int i = 0; i<33; i++)
+      {
+         HotDog3.justSold();
+      }
+
+      System.out.println(HotDog1);
+      System.out.println(HotDog2);
+      System.out.println(HotDog3);
+      System.out.println("Total Sold = "+ HotDog1.totalSold());
+      System.out.println("");
+
+      for(int i =0; i<3; i++)
+      {
+         HotDog1.justSold();
+      }
+
+      for(int i = 0; i<2; i++)
+      {
+          HotDog2.justSold();
+      }
+      System.out.println("Sold at Stand 1, 2, 1, 1, 2:");
+      System.out.println(HotDog1);
+      System.out.println(HotDog2);
+      System.out.println(HotDog3);
+      System.out.println("Total Sold = " + HotDog2.totalSold());
+
+      System.out.println("");
+      System.out.println("More Sold at Stand 3, 3, 2, 1, 1,: ");
+      for(int i=0;i<2; i++)
+      {
+         HotDog3.justSold();
+         HotDog1.justSold();
+      }
+      HotDog2.justSold();
+
+      System.out.println(HotDog1);
+      System.out.println(HotDog2);
+      System.out.println(HotDog3);
+      System.out.println("Total Sold = " + HotDog3.totalSold());
+   }
+
+}
+jmcdonald@abbott ~/cs1400/lab $ javac HotDogTest.java
+jjmcdonald@abbott ~/cs1400/lab $ java HotDogTest
+Stand 1 sold 0 Hotdogs.
+Stand 2 sold 0 Hotdogs.
+Stand 3 sold 33 Hotdogs.
+Total Sold = 33
+
+Sold at Stand 1, 2, 1, 1, 2:
+Stand 1 sold 3 Hotdogs.
+Stand 2 sold 2 Hotdogs.
+Stand 3 sold 33 Hotdogs.
+Total Sold = 38
+
+More Sold at Stand 3, 3, 2, 1, 1,:
+Stand 1 sold 5 Hotdogs.
+Stand 2 sold 3 Hotdogs.
+Stand 3 sold 35 Hotdogs.
+Total Sold = 43
+jmcdonald@abbott ~/cs1400/lab $ exit script
+exit
+bash: exit: script: numeric argument required
+
+Script done on 2018-11-15 22:12:03-08:00

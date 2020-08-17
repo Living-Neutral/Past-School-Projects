@@ -1,0 +1,228 @@
+Script started on 2018-10-24 22:09:41-07:00
+jmcdonald@abbott ~/cs1400/project $ pwd
+/user/jmcdonald/cs1400/project
+jmcdonald@abbott ~/cs1400/project $ ls -l
+total 69
+-rw------- 1 jmcdonald cpp  1073 Sep  6 16:15 InputOutput.class
+-rw------- 1 jmcdonald cpp   757 Sep  6 16:15 InputOutput.java
+-rw------- 1 jmcdonald cpp   514 Sep  6 16:08 InputToOutput.java
+-rw------- 1 jmcdonald cpp   523 Sep  6 15:57 InputToOutputjava
+-rw------- 1 jmcdonald cpp  2959 Oct 14 11:55 MethodRPS.class
+-rw------- 1 jmcdonald cpp  4872 Oct 14 11:54 MethodRPS.java
+-rw------- 1 jmcdonald cpp  2213 Sep 15 13:45 Season.class
+-rw------- 1 jmcdonald cpp  2868 Sep 15 13:45 Season.java
+-rw------- 1 jmcdonald cpp   506 Sep 13 14:40 Season.java.save
+-rw------- 1 jmcdonald cpp  1557 Oct 24 16:31 Temperature.class
+-rw------- 1 jmcdonald cpp  1801 Oct 24 16:31 Temperature.java
+-rw------- 1 jmcdonald cpp  2792 Oct 24 22:00 TemperatureTest.class
+-rw------- 1 jmcdonald cpp  2833 Oct 24 16:32 TemperatureTest.java
+-rw------- 1 jmcdonald cpp   986 Sep  8 22:22 TimeConversionToHMS.class
+-rw------- 1 jmcdonald cpp   757 Sep  8 22:21 TimeConversionToHMS.java
+-rw------- 1 jmcdonald cpp  1071 Sep  8 22:19 TimeConversionToSecond.class
+-rw------- 1 jmcdonald cpp   875 Sep  7 23:07 TimeConversionToSecond.java
+-rw------- 1 jmcdonald cpp  1481 Oct  3 21:44 palindrometester.class
+-rw------- 1 jmcdonald cpp  1459 Oct 21 09:49 palindrometester.java
+-rw------- 1 jmcdonald cpp  1317 Oct  3 20:15 palindrometester.java.save
+-rw------- 1 jmcdonald cpp   486 Oct  1 21:18 palindrometester.java]
+-rw------- 1 jmcdonald cpp  5216 Oct  3 21:48 pj3.txt
+-rw------- 1 jmcdonald cpp 12132 Oct 14 11:58 pj4.txt
+-rw------- 1 jmcdonald cpp     0 Oct 24 22:09 pj5.txt
+jmcdonald@abbott ~/cs1400/project $ cat Temperature.java
+//Jeffrey McDonald
+//CS1400, section 01
+//Project 5 - Temperature Conversion Object
+//10/25/2018
+
+public class Temperature
+{
+    private double degrees;
+    private char scale;
+
+    public Temperature(double d)
+    {
+       degrees = d;
+       scale = 'c';
+    }
+
+    public Temperature(char s)
+    {
+       degrees = 0.0;
+       scale = s;
+    }
+
+    public Temperature(double d, char s)
+    {
+       degrees = d;
+       scale =   s;
+    }
+
+    public Temperature()
+    {
+       degrees = 0.0;
+       scale = 'c';
+    }
+
+    public void setTemperature(double d)
+    {
+       degrees = d;
+    }
+
+    public void setScale(char s)
+    {
+       scale = s;
+       if(!(scale == 'F' || scale == 'f' || scale == 'C' || scale == 'c'))
+       {
+       System.out.println("Invalid Scale");
+       System.exit(0);
+       }
+    }
+
+    public void setBoth(double d, char s)
+    {
+       degrees = d;
+       scale = s;
+       if(!(scale=='F' || scale=='f' || scale=='C' || scale=='c'))
+       {
+       System.out.println("Invalid Scale");
+       System.exit(0);
+       }
+    }
+
+    public double getdegreesF()
+    {
+       if(scale == 'F' || scale == 'f')
+       return degrees;
+       else
+       return degrees = ((degrees *9.0)/5.0) + 32.0;
+
+    }
+
+    public double getdegreesC()
+    {
+       if(scale == 'C' || scale == 'c')
+       return degrees;
+       else
+       return degrees = (degrees - 32.0) *5.0 /9;
+    }
+
+    public boolean equalsTemp(Temperature other)
+    {
+      return getdegreesC()==other.getdegreesC();
+    }
+
+    public boolean greaterThanTemp(Temperature other)
+    {
+      return getdegreesC()>other.getdegreesC();
+    }
+
+    public boolean lessThanTemp(Temperature other)
+    {
+       return getdegreesC()<other.getdegreesC();
+    }
+
+}
+jmcdonald@abbott ~/cs1400/project $ cat TemperatureTest.java
+//Jeffrey McDonald
+//CS1400, section 01
+//Project 5 - Temperature Conversion Object
+//10/25/2018
+
+public class TemperatureTest
+{
+   public static void main(String []args)
+      {
+         char F,f,C,c;
+         F = 'F';
+         f = 'f';
+         C = 'C';
+         c = 'c';
+
+         Temperature t1 = new Temperature();
+         Temperature t2 = new Temperature(-40);
+         Temperature t3 = new Temperature(f);
+         Temperature t4 = new Temperature(32.0,F);
+
+         System.out.println("");
+         System.out.println("Test 4 constructors...");
+         System.out.println("t1:created by no-arg constructor");
+         System.out.println("t2:created by 1-arg constructor with inital degree to be -40");
+         System.out.println("t3:created by 1-arg constructor with inital degree to be 'F'");
+         System.out.println("t4:created by 2-arg constructor with inital temperature 32 F");
+
+         double t3c = t3.getdegreesC();
+         double t3f = t3.getdegreesF();
+         double t4f = t4.getdegreesF();
+         double t4c = t4.getdegreesC();
+
+         System.out.println("");
+         System.out.println("Test 2 getter methods...");
+         System.out.println("t1 is " + t1.getdegreesC() + " c = " + t1.getdegreesF()+ " f" );
+         System.out.println("t2 is " + t2.getdegreesC() + " c = " + t2.getdegreesF()+ " f" );
+         System.out.printf("t3 is %.1f c = %.1f f\n",t3c,t3f);
+         System.out.printf("t4 is %.1f c = %.1f f\n",t4c,t4f);
+
+         System.out.println("");
+         System.out.println("Test 3 comparison methods...");
+         System.out.println("is t1 (<,==,>) t2? results are " + t1.lessThanTemp(t2)+ ", " + t1.equalsTemp(t2) + ", " + t1.greaterThanTemp(t2));
+         System.out.println("is t2 (<,==,>) t3? results are " + t2.lessThanTemp(t3)+ ", " + t2.equalsTemp(t3) + ", " + t2.greaterThanTemp(t3));
+         System.out.println("is t1 (<,==,>) t4? results are " + t1.lessThanTemp(t4)+ ", " + t1.equalsTemp(t4) + ", " + t1.greaterThanTemp(t4));
+
+         System.out.println("");
+         System.out.println("Test 3 setter methods...");
+         System.out.println("changing 0 c to -40 c...");
+         t1.setTemperature(-40);
+         System.out.println("t1 is " + t1.getdegreesC() + " C" + " = " + t1.getdegreesF() + " F ");
+         System.out.println("");
+         System.out.println("changing t3 from 0 F to 100 C ...");
+         t3.setBoth(100, C);
+         System.out.println("t3 is " + t3.getdegreesC() + " C" + " = " + t3.getdegreesF() + " F " );
+         System.out.println("changing t4 from 32 F to 32 C...");
+         t4.setScale(c);
+         System.out.printf("t4 is %.1f C = %.1f F \n",t4c,t4f);
+
+         System.out.println("set t2's scale to 'G'...");
+         t2.setScale('G');
+         System.out.println("invalid scale");
+    }
+}
+jmcdonald@abbott ~/cs1400/project $ javac Temperature.java
+jmcdonald@abbott ~/cs1400/project $ javac TemperatureTest.java
+jmcdonald@abbott ~/cs1400/project $ java TemperatureTest
+
+Test 4 constructors...
+t1:created by no-arg constructor
+t2:created by 1-arg constructor with inital degree to be -40
+t3:created by 1-arg constructor with inital degree to be 'F'
+t4:created by 2-arg constructor with inital temperature 32 F
+
+Test 2 getter methods...
+t1 is 0.0 c = 32.0 f
+t2 is -40.0 c = -40.0 f
+t3 is -17.8 c = -17.8 f
+t4 is 0.0 c = 32.0 f
+
+Test 3 comparison methods...
+is t1 (<,==,>) t2? results are false, false, true
+is t2 (<,==,>) t3? results are true, false, false
+is t1 (<,==,>) t4? results are false, false, true
+
+Test 3 setter methods...
+changing 0 c to -40 c...
+t1 is -40.0 C = -40.0 F
+
+changing t3 from 0 F to 100 C ...
+t3 is 100.0 C = 212.0 F
+changing t4 from 32 F to 32 C...
+t4 is 0.0 C = 32.0 F
+set t2's scale to 'G'...
+Invalid Scale
+jmcdonald@abbott ~/cs1400/project $ exit script
+exit
+bash: exit: script: numeric argument required
+
+Script done on 2018-10-24 22:11:24-07:00
+jmcdonald@abbott ~/cs1400/project $
+jmcdonald@abbott ~/cs1400/project $ set t2's scale to 'G'...
+> Invalid Scale
+> jmcdonald@abbott ~/cs1400/project $ exit script
+> exit
