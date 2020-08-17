@@ -1,0 +1,91 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/12/Memory.jack
+
+/**
+ * This library provides two services: direct access to the computer's main
+ * memory (RAM), and allocation and recycling of memory blocks. The Hack RAM
+ * consists of 32,768 words, each holding a 16-bit binary number.
+ */ 
+class Memory 
+{
+    static Array RAM;
+    static int free_list;
+    static Array HEAP;
+
+    /** Initializes the class. */
+    function void init() 
+    {
+      
+       let RAM = 0;
+       let free_list = 2048; // heap base 
+       let HEAP = free_list; 
+       let HEAP[0] = 0; // if there is no more free segments
+       let HEAP[1] = 14335; // the amount of free ram
+       return;
+    }
+
+    /** Returns the RAM value at the given address. */
+    function int peek(int address) 
+    {
+       return RAM[address];
+    }
+
+    /** Sets the RAM value at the given address to the given value. */
+    function void poke(int address, int value) 
+    {
+       let RAM[address]=value;
+       return;
+    }
+
+    /** Finds an available RAM block of the given size and returns
+     *  a reference to its base address. */
+    function int alloc(int size) 
+    {
+       var int current_size, block;
+
+       let HEAP = free_list;
+       let current_size = HEAP[1];
+
+       // find first fit
+
+       while (~(HEAP=0) & (current_size < (size + 2)))
+       {
+          let HEAP = HEAP[0];
+          let current_size = HEAP[1];
+       }
+      
+      // no segment found
+      // throws an error
+       if(HEAP = 0)
+       {
+          do Sys.error(1);
+       }
+
+       // block = base address of the found space 
+       let HEAP[1] = (current_size-size-2);
+
+       let block = ((HEAP+current_size+2)-size);
+       let HEAP = (block-2);
+       let HEAP[0] = 0;
+       let HEAP[1] = size;
+
+       return block;
+
+       
+
+    }
+
+    /** De-allocates the given object (cast as an array) by making
+     *  it available for future allocations. */
+    function void deAlloc(Array o) 
+    {
+       let HEAP = o-2;
+       let HEAP[0] = free_list;
+       let free_list = HEAP;
+       return;
+
+
+    }    
+}
