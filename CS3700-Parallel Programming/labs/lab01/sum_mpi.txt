@@ -1,0 +1,5 @@
+       JobID    JobName  Partition    Account  AllocCPUS      State ExitCode
+------------ ---------- ---------- ---------- ---------- ---------- --------
+6390            SUM_MPI    compute        cpp          2  COMPLETED      0:0
+6390.batch        batch                   cpp          1  COMPLETED      0:0
+6390.0            orted                   cpp          1  COMPLETED      0:0
